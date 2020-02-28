@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Feb 07 15:39:54 GMT 2020
+#Fri Feb 28 19:21:53 GMT 2020
 4.path=flutter_assets/isolate_snapshot_data
 13.baseType=DIRECTORY
 8.set=ASSET
@@ -9,19 +9,22 @@
 5.baseType=DIRECTORY
 1.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 8.path=flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
-12.path=lib/x86/libflutter.so
+12.path=flutter_assets/assets/appbar.png
 3.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+14.path=flutter_assets/assets/garage_small.png
 4.set=ASSET
 5.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 7.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 11.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 9.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
-13.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+13.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 1.baseType=DIRECTORY
 11.set=ASSET
 0.set=ASSET
+14.baseType=DIRECTORY
 6.baseType=DIRECTORY
 7.set=ASSET
+14.set=ASSET
 3.set=ASSET
 2.baseType=DIRECTORY
 10.baseType=DIRECTORY
@@ -36,24 +39,25 @@
 9.path=flutter_assets/assets/full_logo.png
 6.set=DEX
 2.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
-13.path=flutter_assets/assets/garage_small.png
+13.path=lib/x86/libflutter.so
 11.baseType=DIRECTORY
 4.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 3.baseType=DIRECTORY
 6.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 10.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
-13.set=ASSET
+13.set=NATIVE_RESOURCE
 8.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 2.set=ASSET
 8.baseType=DIRECTORY
-12.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
+12.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+14.base=C\:\\Users\\Andre\\StudioProjects\\honours\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 9.set=ASSET
-count=14
+count=15
 12.baseType=DIRECTORY
 4.baseType=DIRECTORY
 5.set=ASSET
 9.baseType=DIRECTORY
 0.path=flutter_assets/FontManifest.json
-12.set=NATIVE_RESOURCE
+12.set=ASSET
 1.set=NATIVE_RESOURCE
 2.path=flutter_assets/vm_snapshot_data
