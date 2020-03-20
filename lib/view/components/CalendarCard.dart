@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
-
+import 'package:intl/date_symbol_data_local.dart';
 class CalendarCard extends StatefulWidget {
   @override
   _CalendarCardState createState() => _CalendarCardState();
@@ -59,6 +59,7 @@ class _CalendarCardState extends State<CalendarCard> {
         TableCalendar(
           events: _events,
           initialCalendarFormat: CalendarFormat.month,
+          locale: initializeDateFormatting('en_GB', null).toString(),
           headerStyle: HeaderStyle(
             centerHeaderTitle: true,
             titleTextStyle: TextStyle(color: Colors.blueAccent),
@@ -135,7 +136,7 @@ class _CalendarCardState extends State<CalendarCard> {
               hintText: "Type event name here",
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                borderSide: BorderSide(color: Color(0xff6940e2))
+                //borderSide: BorderSide(color: Color(0xff6940e2))
               ),
             ),
           ),

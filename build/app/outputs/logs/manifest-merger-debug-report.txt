@@ -5,6 +5,9 @@ INJECTED from C:\Users\Andre\StudioProjects\honours\android\app\src\main\Android
 INJECTED from C:\Users\Andre\StudioProjects\honours\android\app\src\main\AndroidManifest.xml:1:1-33:12
 INJECTED from C:\Users\Andre\StudioProjects\honours\android\app\src\main\AndroidManifest.xml:1:1-33:12
 MERGED from C:\Users\Andre\StudioProjects\honours\android\app\src\main\AndroidManifest.xml:1:1-33:12
+MERGED from [:shared_preferences] C:\Users\Andre\StudioProjects\honours\build\shared_preferences\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences_web] C:\Users\Andre\StudioProjects\honours\build\shared_preferences_web\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences_macos] C:\Users\Andre\StudioProjects\honours\build\shared_preferences_macos\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-7:12
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Andre\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\464dd832883967be4d81aa67eaec72f8\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Andre\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\0e4e28c15633e1bddf51ec387b0d7f3b\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Andre\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\69fca592f0e7cd3dafe8f42b8e1c7ecf\AndroidManifest.xml:17:1-22:12
@@ -93,6 +96,12 @@ uses-sdk
 INJECTED from C:\Users\Andre\StudioProjects\honours\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Andre\StudioProjects\honours\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Andre\StudioProjects\honours\android\app\src\main\AndroidManifest.xml
+MERGED from [:shared_preferences] C:\Users\Andre\StudioProjects\honours\build\shared_preferences\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] C:\Users\Andre\StudioProjects\honours\build\shared_preferences\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_web] C:\Users\Andre\StudioProjects\honours\build\shared_preferences_web\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_web] C:\Users\Andre\StudioProjects\honours\build\shared_preferences_web\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_macos] C:\Users\Andre\StudioProjects\honours\build\shared_preferences_macos\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_macos] C:\Users\Andre\StudioProjects\honours\build\shared_preferences_macos\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Andre\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\464dd832883967be4d81aa67eaec72f8\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Andre\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\464dd832883967be4d81aa67eaec72f8\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Andre\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\0e4e28c15633e1bddf51ec387b0d7f3b\AndroidManifest.xml:20:5-44

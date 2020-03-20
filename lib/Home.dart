@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:honours/model/User.dart';
 import 'package:honours/view/page_containers/BikePageContainer.dart';
 import 'package:honours/view/page_containers/HomePageContainer.dart';
-
+import 'package:honours/helpers/AwsGatewayHelper.dart';
 import 'viewmodel/BikePage.dart';
 import 'viewmodel/HomePage.dart';
 import 'viewmodel/ProfilePage.dart';
@@ -16,31 +17,68 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 1;
-  final List<Widget> _children = [
-    BikePage(),
-    HomePage(),
-    ProfilePage(),
-  ];
+
+  var user = fetchUser();
   TextStyle optionStyle = TextStyle(
     color: Colors.white,
     fontSize: 14.0,
   );
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      backgroundColor: Color(0xff6940e2),
+      //backgroundColor: Color(0xff6940e2),
       appBar: AppBar(
         title: Text("Motodocs"),
         actions: <Widget>[
           Image(
-            image: AssetImage('assets/garage_large.png'),
+            image: AssetImage('assets/appbar.png'),
           )
         ],
-        backgroundColor: Color(0xff6940e2),
+        //backgroundColor: Color(0xff6940e2),
       ),
-      body: _children.elementAt(_selectedIndex),
+      body: FutureBuilder(
+        future: user,
+        builder: (context, snapshot) {
+          switch(snapshot.connectionState){
+            case ConnectionState.none:
+              return Text("");
+              break;
+            case ConnectionState.active:
+              return Text("");
+              break;
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.white
+                  //valueColor: Colors.blueAccent,
+                ),
+              );
+              break;
+            case ConnectionState.done:
+              List<Widget> _children = [
+                new BikePage(user: (snapshot.hasData) ? snapshot.data : snapshot.error),
+                new HomePage(user: snapshot.hasData ? snapshot.data : snapshot.error),
+                new ProfilePage(user: snapshot.hasData ? snapshot.data : snapshot.error),
+              ];
+              return _children.elementAt(_selectedIndex);
+              break;
+            default:
+              return Text("Default");
+          }
+        },
+      ),
+
+
+      //_children.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xff6940e2),
+        //backgroundColor: Color(0xff6940e2),
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: [

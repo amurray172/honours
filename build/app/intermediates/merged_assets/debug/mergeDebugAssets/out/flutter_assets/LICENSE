@@ -3992,6 +3992,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 --------------------------------------------------------------------------------
 charcode
 fixnum
+http
+http_parser
 matcher
 path
 pool

@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:honours/model/User.dart';
 import '../components/ProfileCards.dart';
 import '../../model/Bike.dart';
 import '../components/HomeCards.dart';
 class ProfilePageContainer extends StatefulWidget {
-  ProfilePageContainer({Key key, this.title, List bikesList}) : super(key: key);
+  ProfilePageContainer({Key key, this.title, this.user, List bikesList}) : super(key: key);
   final String title;
-
+  final User user;
 
   @override
   _ProfilePageContainerState createState() => _ProfilePageContainerState();
@@ -23,7 +24,7 @@ class _ProfilePageContainerState extends State<ProfilePageContainer> {
         child: new Card(
             shape: RoundedRectangleBorder(
               side: new BorderSide(
-                color: Color(0xff6940e2),
+                //color: Color(0xff6940e2),
               ),
               borderRadius: BorderRadius.only(
                   topRight: Radius.elliptical(80.0, 40.0),
