@@ -26,5 +26,10 @@ class User {
     };
   }
 
-
+  Map<String, dynamic> toJson() => {
+    "username": username,
+    "password": password,
+    "email": email,
+    "bikes": bikes,
+  };
 }

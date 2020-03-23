@@ -53,13 +53,14 @@ class _CalendarCardState extends State<CalendarCard> {
 
   @override
   Widget build(BuildContext context) {
-
+    print(initializeDateFormatting('en_US', null).toString());
     return Column(
       children: <Widget>[
         TableCalendar(
           events: _events,
           initialCalendarFormat: CalendarFormat.month,
-          locale: initializeDateFormatting('en_GB', null).toString(),
+          //Keep commented in case of emergency cause it sometimes doesnt work
+          //locale: initializeDateFormatting('en_US', null).toString(),
           headerStyle: HeaderStyle(
             centerHeaderTitle: true,
             titleTextStyle: TextStyle(color: Colors.blueAccent),

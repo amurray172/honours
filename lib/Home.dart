@@ -74,8 +74,6 @@ class _HomeState extends State<Home> {
           }
         },
       ),
-
-
       //_children.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         //backgroundColor: Color(0xff6940e2),

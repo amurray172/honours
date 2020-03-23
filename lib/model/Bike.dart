@@ -18,7 +18,14 @@ class Bike {
     this.insuranceRenewalDate,
     this.insuranceTotalExcess,
     this.insuranceUsage,
-    this.insuranceYearsNoClaims
+    this.insuranceYearsNoClaims,
+    this.purchasePrice,
+    this.purchaseType,
+    this.valueOfAccessories,
+    this.monthlyPayment,
+    this.optionalFinalPayment,
+    this.financeContractLength,
+    this.financeEstimatedMileage
   });
 
   String make;
@@ -38,6 +45,13 @@ class Bike {
   double insuranceTotalExcess;
   String insuranceUsage;
   int insuranceYearsNoClaims;
+  double purchasePrice;
+  String purchaseType;
+  double valueOfAccessories;
+  double monthlyPayment;
+  double optionalFinalPayment;
+  int financeContractLength;
+  int financeEstimatedMileage;
 
   factory Bike.fromJson(Map<String, String> json) {
 
@@ -57,7 +71,14 @@ class Bike {
       insuranceRenewalDate: new DateFormat("dd/MM/yyyy", "en_GB").parse(json['insuranceRenewalDate']),
       insuranceTotalExcess: double.parse(json['insuranceTotalExcess']),
       insuranceUsage: json['insuranceUsage'],
-      insuranceYearsNoClaims: int.parse(json['insuranceYearsNoClaims'])
+      insuranceYearsNoClaims: int.parse(json['insuranceYearsNoClaims']),
+      purchasePrice: double.parse(json['purchasePrice']),
+      purchaseType: json['purchaseType'],
+      valueOfAccessories: double.parse(json['valueOfAccessories']),
+      monthlyPayment: double.parse(json['monthlyPayment']),
+      optionalFinalPayment: double.parse(json['optionalFinalPayment']),
+      financeContractLength: int.parse(json['financeContractLength']),
+      financeEstimatedMileage: int.parse(json['financeEstimatedMileage'])
     );
   }
 
@@ -78,7 +99,14 @@ class Bike {
       "insuranceRenewalDate": insuranceRenewalDate,
       "insuranceTotalExcess": insuranceTotalExcess,
       "insuranceUsage": insuranceUsage,
-      "insuranceYearsNoClaims": insuranceYearsNoClaims
+      "insuranceYearsNoClaims": insuranceYearsNoClaims,
+      "purchasePrice": purchasePrice,
+      "purchaseType": purchaseType,
+      "valueOfAccessories": valueOfAccessories,
+      "monthlyPayment": monthlyPayment,
+      "optionalFinalPayment": optionalFinalPayment,
+      "financeContractLength": financeContractLength,
+      "financeEstimatedMileage": financeEstimatedMileage
     };
   }
 
@@ -89,6 +117,5 @@ class Bike {
   void set age(int currentYear) {
     bikeAge = currentYear - year;
   }
-
 
 }
