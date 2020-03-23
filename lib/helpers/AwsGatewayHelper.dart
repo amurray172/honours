@@ -20,3 +20,24 @@ Future<User> fetchUser() async {
     throw Exception('Failed to load album');
   }
 }
+
+
+Future<http.Response> updateUser(jsonMap) async {
+  String url = 'https://tl0gmb1a3e.execute-api.eu-west-2.amazonaws.com/prod/users/Andy172/';
+  var response = await http.post(
+    Uri.encodeFull(url),
+    headers: {"Accept": "application/json"},
+    body: json.encode(jsonMap),
+  );
+  return response;
+}
+
+Future<http.Response> addUser(jsonMap) async {
+  String url = 'https://tl0gmb1a3e.execute-api.eu-west-2.amazonaws.com/prod/users/Andy172/';
+  var response = await http.post(
+    Uri.encodeFull(url),
+    headers: {"Accept": "application/json"},
+    body: json.encode(jsonMap),
+  );
+  return response;
+}

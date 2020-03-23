@@ -15,7 +15,6 @@ class BikePage extends StatefulWidget {
 class _BikePageState extends State<BikePage> {
   @override
   Widget build(BuildContext context) {
-      //print(BikePage.user);
       return Center(
         child: ClipRRect(
             borderRadius: BorderRadius.only(
