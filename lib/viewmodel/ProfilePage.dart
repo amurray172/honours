@@ -16,7 +16,6 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-
       child: ClipRRect(
           borderRadius: BorderRadius.only(
               topRight: Radius.elliptical(80.0, 40.0),
@@ -24,6 +23,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           child: ProfilePageContainer(title: "Honours", user: widget.user)
       ),
-    );;
+    );
   }
 }

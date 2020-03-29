@@ -33,15 +33,15 @@ class Bike {
   int year;
   int bikeAge;
   String colour;
-  DateTime motRenewalDate;
+  String motRenewalDate;
   int mileageAtMot;
-  DateTime lastServiceDate;
+  String lastServiceDate;
   int mileageAtService;
   int serviceInterval;
   String insuranceCoverType;
   double insurancePremium;
   String insuranceProvider;
-  DateTime insuranceRenewalDate;
+  String insuranceRenewalDate;
   double insuranceTotalExcess;
   String insuranceUsage;
   int insuranceYearsNoClaims;
@@ -54,21 +54,22 @@ class Bike {
   int financeEstimatedMileage;
 
   factory Bike.fromJson(Map<String, String> json) {
-
+    var motDate = DateTime.parse(json['motRenewalDate']);
+    String formattedMotDate = "${motDate.day}/${motDate.month}/${motDate.year}";
     return Bike(
       make: json['make'],
       model: json['model'],
       year: int.parse(json['year']),
       colour: json['colour'],
-      motRenewalDate: new DateFormat("dd/MM/yyyy", "en_GB").parse(json['motRenewalDate']),
+      motRenewalDate: json['motRenewalDate'],
       mileageAtMot: int.parse(json['mileageAtMot']),
-      lastServiceDate: new DateFormat("dd/MM/yyyy", "en_GB").parse(json['lastServiceDate']),
+      lastServiceDate: json['lastServiceDate'],
       mileageAtService: int.parse(json['mileageAtService']),
       serviceInterval: int.parse(json['serviceInterval']),
       insuranceCoverType: json['insuranceCoverType'],
       insurancePremium: double.parse(json['insurancePremium']),
       insuranceProvider: json['insuranceProvider'],
-      insuranceRenewalDate: new DateFormat("dd/MM/yyyy", "en_GB").parse(json['insuranceRenewalDate']),
+      insuranceRenewalDate: json['insuranceRenewalDate'],
       insuranceTotalExcess: double.parse(json['insuranceTotalExcess']),
       insuranceUsage: json['insuranceUsage'],
       insuranceYearsNoClaims: int.parse(json['insuranceYearsNoClaims']),

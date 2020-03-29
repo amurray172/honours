@@ -7,8 +7,8 @@ class BikeCards extends StatefulWidget {
   BikeCards({this.context, this.i, this.user});
 
   final BuildContext context;
-  final int i;
-  final User user;
+  int i;
+  User user;
 
   @override
   _BikeCardsState createState() => _BikeCardsState();
@@ -16,9 +16,19 @@ class BikeCards extends StatefulWidget {
 }
 
 class _BikeCardsState extends State<BikeCards> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var i = widget.i;
+
+    setState(() {
+      widget.i= widget.i;
+    });
+    //print(widget.user.bikes[widget.i]);
         return new Card(
           color: Colors.white,
           shape: RoundedRectangleBorder(
@@ -35,7 +45,7 @@ class _BikeCardsState extends State<BikeCards> {
             child: Column(
               children: <Widget>[
                 Text(
-                  widget.user.bikes.elementAt(i)['make'],
+                  widget.user.bikes[widget.i]['make'],
                   textAlign: TextAlign.center,
                   style: new TextStyle(
                     color: Colors.blueAccent,
@@ -43,7 +53,7 @@ class _BikeCardsState extends State<BikeCards> {
                   ),
                 ),
                 Text(
-                  widget.user.bikes.elementAt(i)['model'].toString(),
+                  widget.user.bikes[widget.i]['model'].toString(),
                   textAlign: TextAlign.center,
                   style: new TextStyle(
                     color: Colors.blueAccent,
@@ -51,7 +61,7 @@ class _BikeCardsState extends State<BikeCards> {
                   ),
                 ),
                 Text(
-                  widget.user.bikes.elementAt(i)['year'].toString(),
+                  widget.user.bikes[widget.i]['year'].toString(),
                   textAlign: TextAlign.center,
                   style: new TextStyle(
                     color: Colors.blueAccent,
@@ -59,10 +69,10 @@ class _BikeCardsState extends State<BikeCards> {
                   ),
                 ),
                 Text(
-                  widget.user.bikes.elementAt(i)['colour'],
+                  widget.user.bikes[widget.i]['colour'],
                   textAlign: TextAlign.center,
                   style: new TextStyle(
-                    color: Colors.white,
+                    color: Colors.blueAccent,
                     fontSize: 24.0,
                   ),
                 )
