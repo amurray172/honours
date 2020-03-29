@@ -3,7 +3,9 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:honours/helpers/AwsGatewayHelper.dart';
 import 'package:honours/model/User.dart';
+import 'package:honours/view/components/AddNewBikeForm.dart';
 import 'package:honours/view/components/EditBikeForm.dart';
 import 'package:intl/intl.dart';
 import '../../model/Bike.dart';
@@ -11,95 +13,156 @@ import '../components/BikeCards.dart';
 class BikePageContainer extends StatefulWidget {
   BikePageContainer({Key key, this.title, this.user, List bikesList}) : super(key: key);
   final String title;
-  final User user;
+  User user;
 
   @override
   _BikePageContainerState createState() => _BikePageContainerState();
+
 }
 
 class _BikePageContainerState extends State<BikePageContainer> {
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-
-    final _animatedListKey = GlobalKey<AnimatedListState>();
-    List<Bike> bikesList = [];
-
-    for(int i = 0; i < widget.user.bikes.length; i++) {
-
-      final String make = widget.user.bikes.elementAt(i)['make'];
-      final String model = widget.user.bikes.elementAt(i)['model'];
-      final int year = int.parse(widget.user.bikes.elementAt(i)['year']);
-      final String colour = widget.user.bikes.elementAt(i)['colour'];
-      final DateTime motRenewalDate = new DateFormat("dd/MM/yyyy", "en_GB").parse(widget.user.bikes.elementAt(i)['motRenewalDate']);
-      final int mileageAtMot = int.parse(widget.user.bikes.elementAt(i)['mileageAtMot']);
-      final DateTime lastServiceDate = new DateFormat("dd/MM/yyyy", "en_GB").parse(widget.user.bikes.elementAt(i)['lastServiceDate']);
-      final int mileageAtService = int.parse(widget.user.bikes.elementAt(i)['mileageAtService']);
-      final int serviceInterval = int.parse(widget.user.bikes.elementAt(i)['serviceInterval']);
-      final String insuranceCoverType = widget.user.bikes.elementAt(i)['insuranceCoverType'];
-      final double insurancePremium = double.parse(widget.user.bikes.elementAt(i)['insurancePremium']);
-      final String insuranceProvider = widget.user.bikes.elementAt(i)['insuranceProvider'];
-      final DateTime insuranceRenewalDate = new DateFormat("dd/MM/yyyy", "en_GB").parse(widget.user.bikes.elementAt(i)['insuranceRenewalDate']);
-      final double insuranceTotalExcess = double.parse(widget.user.bikes.elementAt(i)['insuranceTotalExcess']);
-      final String insuranceUsage = widget.user.bikes.elementAt(i)['insuranceUsage'];
-      final int insuranceYearsNoClaims = int.parse(widget.user.bikes.elementAt(i)['insuranceYearsNoClaims']);
-      final double purchasePrice = double.parse(widget.user.bikes.elementAt(i)['purchasePrice']);
-      final String purchaseType = widget.user.bikes.elementAt(i)['purchaseType'].toString();
-      final double valueOfAccessories = double.parse(widget.user.bikes.elementAt(i)['valueOfAccessories']);
-      final double monthlyPayment = double.parse(widget.user.bikes.elementAt(i)['monthlyPayment']);
-      final double optionalFinalPayment = double.parse(widget.user.bikes.elementAt(i)['optionalFinalPayment']);
-      final int financeContractLength = int.parse(widget.user.bikes.elementAt(i)['financeContractLength']);
-      final int financeEstimatedMileage = int.parse(widget.user.bikes.elementAt(i)['financeEstimatedMileage']);
-
-      Bike newBike = new Bike(
-          make: make,
-          model: model,
-          year: year,
-          colour: colour,
-          motRenewalDate: motRenewalDate,
-          mileageAtMot: mileageAtMot,
-          lastServiceDate: lastServiceDate,
-          mileageAtService: mileageAtService,
-          serviceInterval: serviceInterval,
-          insuranceCoverType: insuranceCoverType,
-          insurancePremium: insurancePremium,
-          insuranceProvider: insuranceProvider,
-          insuranceRenewalDate: insuranceRenewalDate,
-          insuranceTotalExcess: insuranceTotalExcess,
-          insuranceUsage: insuranceUsage,
-          insuranceYearsNoClaims: insuranceYearsNoClaims,
-          purchasePrice: purchasePrice,
-          purchaseType: purchaseType,
-          valueOfAccessories: valueOfAccessories,
-          monthlyPayment: monthlyPayment,
-          optionalFinalPayment: optionalFinalPayment,
-          financeContractLength: financeContractLength,
-          financeEstimatedMileage: financeEstimatedMileage,
-      );
-      bikesList.add(newBike);
-    }
-
+    final List<String> items = new List<String>.generate(widget.user.bikes.length, (i) => "Items ${i+1}");
+    //print("Test ${widget.user.bikes.elementAt(2).map}");
     return Container(
       color: Color(0xffeeeeee),
       child: new ListView.builder(
-          itemCount: widget.user.bikes.length,
-          itemBuilder: (BuildContext context, int i) => Container(
-            child: new GestureDetector(
-              child: BikeCards(context: context, i: i, user: widget.user,),
-              onTap: (){
-                showDialog(
-                    context: context,
-                    barrierDismissible: true,
-                    builder: (BuildContext context) {
-                      return new EditBikeForm(user: widget.user, i: i);
-                    }
-                );
-              },
-            ),
-          )
+          itemCount: widget.user.bikes.length + 1,
+          itemBuilder: (BuildContext context, int i) {
+            if(i == (widget.user.bikes.length)) {
+              return Padding(
+                padding: EdgeInsets.all(4.0),
+                child: Center(
+                  child: RaisedButton(
+                    child: SizedBox(
+                      width: 150.0,
+                      height: 50.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(2.0),
+                            child: Icon(Icons.add),
+                          ),
+                          Padding(
+                              padding: EdgeInsets.all(2.0),
+                              child: Text("Add a new bike")
+                          )
+                        ],
+                      ),
+                    ),
+                      onPressed: () async {
+                        await showDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (BuildContext context) {
+                              return new AddNewBikeForm(
+                                user: widget.user,
+                              );
+                            }
+                        ).then((user) {
+                          setState(() {
+                            user = widget.user;
+                          });
+                        });
+                      }
+                  ),
+                ),
+              );
+            } else {
+              return Container(
+                width: 500.0,
+                child: new GestureDetector(
+                  child: new Dismissible(
+                    key: new Key(items[i]),
+                    child: BikeCards(
+                      context: context,
+                      i: i,
+                      user: widget.user,
+                    ),
+                    onDismissed: (direction) {
+                      setState(() {
+                        items.removeAt(i);
+                        widget.user.bikes.removeAt(i);
+                        Scaffold.of(context).showSnackBar(new SnackBar(
+                            content: new Text("Bike Deleted")));
+                      });
+                    },
+                    // ignore: missing_return
+                    confirmDismiss: (DismissDirection direction) async {
+                      final bool res = await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text("Confirm"),
+                            content: Text(
+                                "Are you sure you wish to permanantly delete your ${widget
+                                    .user.bikes.elementAt(i)['make']}"
+                                    " ${widget.user.bikes.elementAt(
+                                    i)['model']}? This cannot be undone"),
+                            actions: <Widget>[
+                              RaisedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    widget.user.bikes.removeAt(i);
+                                    widget.user = widget.user;
+                                    updateUser(widget.user);
+                                    Navigator.of(context).pop();
+                                  });
+                                },
+                                child: const Text(
+                                  "Delete",
+                                ),
+                                color: Color(0xff6940e2),
+                              ),
+                              FlatButton(
+                                onPressed: () =>
+                                    Navigator.of(context).pop(false),
+                                child: const Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                      color: Color(0xff6940e2)
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  onTap: () async {
+                    await showDialog(
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (BuildContext context) {
+                          return new EditBikeForm(
+                              user: widget.user,
+                              i: i
+                          );
+                        }
+                    ).then((user) {
+                      setState(() {
+                        user = widget.user;
+                        i = i;
+                      });
+                    });
+                  },
+                ),
+              );
+            }
+          }
         ),
-    );
+      );
   }
+
 }
 
 

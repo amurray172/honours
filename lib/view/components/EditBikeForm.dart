@@ -1,14 +1,16 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:honours/helpers/AwsGatewayHelper.dart';
 import 'package:honours/model/Bike.dart';
 import 'package:honours/model/User.dart';
+import 'package:honours/view/page_containers/BikePageContainer.dart';
 import 'package:intl/intl.dart';
 
 class EditBikeForm extends StatefulWidget {
   EditBikeForm({ this.user, this.i});
 
-  final User user;
+  User user;
   final int i;
 
   @override
@@ -18,6 +20,40 @@ class EditBikeForm extends StatefulWidget {
 class _EditBikeFormState extends State<EditBikeForm> {
   final _formKey = GlobalKey<FormState>();
 
+  DateTime _newMotDate;
+  DateTime _newServiceDate;
+  DateTime _newInsuranceDate;
+
+
+
+  DateTime startDate = DateTime.now();
+  DateTime lastDate = DateTime.now().add(Duration(days: 365));
+
+  Future<Null> _selectDate(BuildContext context, DateTime _date, String field) async {
+    DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: startDate,
+        firstDate: startDate,
+        lastDate: lastDate
+    );
+    if (picked != null && picked != startDate) {
+      setState(() {
+        switch (field) {
+          case "mot":
+            _newMotDate = picked;
+            break;
+          case "service":
+            _newServiceDate = picked;
+            break;
+          case "insurance":
+            _newInsuranceDate = picked;
+            break;
+          default:
+            _date = picked;
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +66,51 @@ class _EditBikeFormState extends State<EditBikeForm> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Flexible(
+                      child: FractionallySizedBox(
+                        widthFactor: 1.5,
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "My ${widget.user.bikes.elementAt(i)['make']} ${widget.user.bikes.elementAt(i)['model']}'s details:",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Theme.of(context).accentColor,
+                              fontSize: 22.0
+                          ),
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: FractionallySizedBox(
+                        widthFactor: 1.0,
+                        alignment: Alignment.topRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              Navigator.pop(context);
+                            });
+                          },
+                          child: Container(
+                            alignment: Alignment.topRight,
+                            child: Icon(
+                              Icons.close,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 Padding(
                   padding: EdgeInsets.all(8.0),
-                  child:               Text(
-                    "My ${widget.user.bikes.elementAt(i)['make']} ${widget.user.bikes.elementAt(i)['model']}'s details:",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Theme.of(context).accentColor,
-                        fontSize: 22.0
-                    ),
-                  ),
+                  child: Row(
+                    children: <Widget>[
+
+                    ],
+                  )
                 ),
                 Column(
                   children: <Widget>[
@@ -174,31 +245,27 @@ class _EditBikeFormState extends State<EditBikeForm> {
                       Text("MOT Renewal Date"),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
-                            textAlign: TextAlign.center,
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderSide: new BorderSide(color: Color(0xff6940e2))
-                                ),
-                                hintText: "${widget.user.bikes.elementAt(i)['motRenewalDate']}"
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              _newMotDate == null
+                                  ? "Please Select a Date"
+                                  : "Selected Date - ${_newMotDate.day}/${_newMotDate.month}/${_newMotDate.year}",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Theme.of(context).accentColor
+                              ),
                             ),
-                            // ignore: missing_return
-                            validator: (value) {
-                              bool required = false;
-                              if (value.isEmpty && required == true) {
-                                  return 'Please enter your MOT renewal date \n'
-                                      ' in the format DD/MM/YYYY \n '
-                                      'e.g. 25/11/20 ';
-                              }
-                            },
-                            onSaved: (val) => setState(() => {
-                                if (val.isEmpty && widget.user.bikes.elementAt(i)['motRenewalDate'] != null) {
-                                  widget.user.bikes.elementAt(i)['motRenewalDate'] = widget.user.bikes.elementAt(i)['motRenewalDate']
-                                } else {
-                                  widget.user.bikes.elementAt(i)['motRenewalDate'] = new DateFormat("dd/MM/yyyy", "en_GB").parse(val)
-                                }
-                              }
-                            ),
+                            RaisedButton(
+                              onPressed: () {
+                                  _selectDate(context, _newMotDate, "mot");
+                              },
+                              color: Theme
+                                  .of(context)
+                                  .accentColor,
+                              child: Text("Click to select date"),
+                            )
+                          ],
                         ),
                       ),
                     ]
@@ -209,62 +276,63 @@ class _EditBikeFormState extends State<EditBikeForm> {
                     Padding(
                       padding: EdgeInsets.all(8.0),
                       child: TextFormField(
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderSide: new BorderSide(color: Color(0xff6940e2))
-                              ),
-                              hintText: widget.user.bikes.elementAt(i)['mileageAtMot'].toString()
-                          ),
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderSide: new BorderSide(color: Color(0xff6940e2))
+                            ),
+                            hintText: widget.user.bikes.elementAt(i)['mileageAtMot'].toString()
+                        ),
                         // ignore: missing_return
-                          validator: (value) {
-                            bool required = false;
-                            if (value.isEmpty && required == true) {
-                              return 'Please enter the mileage of this\n'
-                                  'bike as of it\'s last MOT';
-                            }
-                          },
-                          onSaved: (val) => setState(() => {
-                              if (val.isEmpty && widget.user.bikes.elementAt(i)['mileageAtMot'] != null) {
-                                widget.user.bikes.elementAt(i)['mileageAtMot'] = widget.user.bikes.elementAt(i)['mileageAtMot']
-                              } else {
-                                widget.user.bikes.elementAt(i)['mileageAtMot'] = int.parse(val)
-                              }
-                            }
-                          ),
+                        validator: (value) {
+                          bool required = false;
+                          if (value.isEmpty && required == true) {
+                            return 'Please enter the mileage of this bike \n'
+                                'as of it\'s last MOT';
+                          }
+                        },
+                        onSaved: (val) => setState(() => {
+                          if (val.isEmpty && widget.user.bikes.elementAt(i)['mileageAtMot'] != null) {
+                            widget.user.bikes.elementAt(i)['mileageAtMot'] = widget.user.bikes.elementAt(i)['mileageAtMot']
+                          } else {
+                            widget.user.bikes.elementAt(i)['mileageAtMot'] = int.parse(val)
+                          }
+                        }
+                        ),
                       ),
                     ),
                   ],
                 ),
                 Column(
                   children: <Widget>[
-                    Text("Date of last Service"),
+                    Text("Next Service Date"),
                     Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: TextFormField(
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderSide: new BorderSide(color: Color(0xff6940e2))
-                              ),
-                              hintText: "${widget.user.bikes.elementAt(i)['lastServiceDate']}"
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            _newServiceDate == null
+                                ? "Please Select a Date"
+                                : "Selected Date - ${_newServiceDate
+                                .day}/${_newServiceDate.month}/${_newServiceDate
+                                .year}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Theme
+                                    .of(context)
+                                    .accentColor
+                            ),
                           ),
-                        // ignore: missing_return
-                          validator: (value) {
-                            bool required = false;
-                            if (value.isEmpty && required == true) {
-                              return 'Please enter the date of this bike\'s \n'
-                                  'last service';
-                            }
-                          },
-                          onSaved: (val) => setState(() => {
-                              if (val.isEmpty && widget.user.bikes.elementAt(i)['lastServiceDate'] != null) {
-                                widget.user.bikes.elementAt(i)['lastServiceDate'] = widget.user.bikes.elementAt(i)['lastServiceDate']
-                              } else {
-                                widget.user.bikes.elementAt(i)['lastServiceDate'] = new DateFormat("dd/MM/yyyy", "en_GB").parse(val)
-                              }
-                            }
-                          ),
+                          RaisedButton(
+                            onPressed: () {
+                              _selectDate(context, _newServiceDate, "service");
+                            },
+                            color: Theme
+                                .of(context)
+                                .accentColor,
+                            child: Text("Click to select date"),
+                          )
+                        ],
                       ),
                     ),
                   ],
@@ -441,30 +509,33 @@ class _EditBikeFormState extends State<EditBikeForm> {
                     Text("Insurance Renewal Date"),
                     Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: TextFormField(
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderSide: new BorderSide(color: Color(0xff6940e2))
-                              ),
-                              hintText: "${widget.user.bikes.elementAt(i)['insuranceRenewalDate']}"
+                      child: Column(
+                        children: <Widget>[
+
+                          Text(
+                            _newInsuranceDate == null
+                                ? "Please Select a Date"
+                                : "Selected Date - ${_newInsuranceDate
+                                .day}/${_newInsuranceDate.month}/${_newInsuranceDate
+                                .year}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Theme
+                                    .of(context)
+                                    .accentColor
+                            ),
                           ),
-                        // ignore: missing_return
-                          validator: (value) {
-                            bool required = false;
-                            if (value.isEmpty && required == true) {
-                              return 'Please enter renewal date for this\n'
-                                  ' bikes insurance policy';
-                            }
-                          },
-                          onSaved: (val) => setState(() => {
-                              if (val.isEmpty && widget.user.bikes.elementAt(i)['insuranceRenewalDate'] != null) {
-                                widget.user.bikes.elementAt(i)['insuranceRenewalDate'] = widget.user.bikes.elementAt(i)['insuranceRenewalDate']
-                              } else {
-                                widget.user.bikes.elementAt(i)['insuranceRenewalDate'] = new DateFormat("dd/MM/yyyy", "en_GB").parse(val)
-                              }
-                            }
-                          ),
+                          RaisedButton(
+                            onPressed: () {
+                              _selectDate(
+                                  context, _newInsuranceDate, "insurance");
+                            },
+                            color: Theme
+                                .of(context)
+                                .accentColor,
+                            child: Text("Click to select date"),
+                          )
+                        ],
                       ),
                     ),
                   ],
@@ -806,47 +877,40 @@ class _EditBikeFormState extends State<EditBikeForm> {
                   ],
                 ),
                 Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: SizedBox(
-                          width: 100.0,
-                          child: RaisedButton(
-                            onPressed: () {
-                              final form = _formKey.currentState;
-                              if(form.validate()) {
-                                form.save();
-                                updateUser(widget.user);
+                  child: Padding(
+                      padding: EdgeInsets.all(2.0),
+                      child: SizedBox(
+                        width: 100.0,
+                        child: RaisedButton(
+                          onPressed: () {
+                            final form = _formKey.currentState;
+                            if(form.validate()) {
+                              form.save();
+                              if(_newMotDate == null) {
+                                _newMotDate = widget.user.bikes.elementAt(i)['motRenewalDate'];
+                              }else if(_newServiceDate == null) {
+                                _newServiceDate = widget.user.bikes.elementAt(i)['lastServiceDate'];
+                              }else if(_newInsuranceDate == null) {
+                                _newInsuranceDate = widget.user.bikes.elementAt(i)['insuranceRenewalDate'];
                               }
-                            },
-                            child: Text("Save"),
-                          ),
-                        )
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(2.0),
-                        child: SizedBox(
-                          width: 100.0,
-                          child: RaisedButton(
-                            child: Text("Delete"),
-                            onPressed: () {
-
-                            },
-                          ),
-                        )
+                              setState(() {
+                                widget.user.bikes.elementAt(i)['motRenewalDate'] = _newMotDate.toIso8601String();
+                                widget.user.bikes.elementAt(i)['lastServiceDate'] = _newServiceDate.toIso8601String();
+                                widget.user.bikes.elementAt(i)['insuranceRenewalDate'] = _newInsuranceDate.toIso8601String();
+                                widget.user = widget.user;
+                                updateUser(widget.user);
+                              });
+                            }
+                          },
+                         child: Text("Save"),
+                        ),
                       )
-                    ],
                   ),
-                )
-              ],
-            ),
+                ),
+            ]),
           ),
         )
     );
   }
-
-
 }
 

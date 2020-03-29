@@ -53,7 +53,7 @@ class _CalendarCardState extends State<CalendarCard> {
 
   @override
   Widget build(BuildContext context) {
-    print(initializeDateFormatting('en_US', null).toString());
+
     return Column(
       children: <Widget>[
         TableCalendar(

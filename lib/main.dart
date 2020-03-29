@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:honours/Login.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'Home.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: primaryColor,
         canvasColor: primaryColor,
       ),
-      home: Home(),
+      home: Login(),
     );//Home;
   }
 }

@@ -21,18 +21,7 @@ class _ProfilePageContainerState extends State<ProfilePageContainer> {
 
     return Container(
         color: Color(0xffeeeeee),
-        child: new Card(
-            shape: RoundedRectangleBorder(
-              side: new BorderSide(
-                //color: Color(0xff6940e2),
-              ),
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.elliptical(80.0, 40.0),
-                  bottomLeft: Radius.elliptical(80.0, 40.0)
-              ),
-            ),
-            child: ProfileCards()
-        )
+        child: ProfileCards(context: context, user: widget.user,)
     );
   }
 }
