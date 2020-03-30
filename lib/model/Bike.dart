@@ -9,7 +9,7 @@ class Bike {
     this.colour,
     this.motRenewalDate,
     this.mileageAtMot,
-    this.lastServiceDate,
+    this.nextServiceDate,
     this.mileageAtService,
     this.serviceInterval,
     this.insuranceCoverType,
@@ -30,12 +30,12 @@ class Bike {
 
   String make;
   String model;
-  int year;
+  String year;
   int bikeAge;
   String colour;
   String motRenewalDate;
   int mileageAtMot;
-  String lastServiceDate;
+  String nextServiceDate;
   int mileageAtService;
   int serviceInterval;
   String insuranceCoverType;
@@ -59,11 +59,11 @@ class Bike {
     return Bike(
       make: json['make'],
       model: json['model'],
-      year: int.parse(json['year']),
+      year: json['year'],
       colour: json['colour'],
       motRenewalDate: json['motRenewalDate'],
       mileageAtMot: int.parse(json['mileageAtMot']),
-      lastServiceDate: json['lastServiceDate'],
+      nextServiceDate: json['nextServiceDate'],
       mileageAtService: int.parse(json['mileageAtService']),
       serviceInterval: int.parse(json['serviceInterval']),
       insuranceCoverType: json['insuranceCoverType'],
@@ -91,7 +91,7 @@ class Bike {
       "colour": colour,
       "motRenewalDate": motRenewalDate,
       "mileageAtMot": mileageAtMot,
-      "lastServiceDate": lastServiceDate,
+      "nextServiceDate": nextServiceDate,
       "mileageAtService": mileageAtService,
       "serviceInterval": serviceInterval,
       "insuranceCoverType": insuranceCoverType,
@@ -110,13 +110,4 @@ class Bike {
       "financeEstimatedMileage": financeEstimatedMileage
     };
   }
-
-  int get age {
-    return bikeAge;
-  }
-
-  void set age(int currentYear) {
-    bikeAge = currentYear - year;
-  }
-
 }

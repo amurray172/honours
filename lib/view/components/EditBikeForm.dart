@@ -20,10 +20,16 @@ class EditBikeForm extends StatefulWidget {
 class _EditBikeFormState extends State<EditBikeForm> {
   final _formKey = GlobalKey<FormState>();
 
+  DateTime _bikeYear;
+  DateTime _currentMotDate;
+  DateTime _currentServiceDate;
+  DateTime _currentInsuranceDate;
+
+
   DateTime _newMotDate;
   DateTime _newServiceDate;
   DateTime _newInsuranceDate;
-
+  DateTime _newYear;
 
 
   DateTime startDate = DateTime.now();
@@ -57,7 +63,14 @@ class _EditBikeFormState extends State<EditBikeForm> {
 
   @override
   Widget build(BuildContext context) {
-    int i = widget.i;
+    int i;
+    setState(() {
+      i = widget.i;
+      _bikeYear = DateTime.parse(widget.user.bikes.elementAt(i)['year']);
+      _currentMotDate = DateTime.parse(widget.user.bikes.elementAt(i)['motRenewalDate']);
+      _currentServiceDate = DateTime.parse(widget.user.bikes.elementAt(i)['nextServiceDate']);
+      _currentInsuranceDate = DateTime.parse(widget.user.bikes.elementAt(i)['insuranceRenewalDate']);
+    });
 
     return SingleChildScrollView(
         child: AlertDialog(
@@ -180,30 +193,37 @@ class _EditBikeFormState extends State<EditBikeForm> {
                   children: <Widget>[
                     Text("Year of Manufacture"),
                     Padding(
+                      padding: EdgeInsets.all(2.0),
+                      child: _newYear == null ? Text("${_bikeYear.year}") : Text("${_newYear.year}"),
+                    ),
+                    Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: TextFormField(
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderSide: new BorderSide(color: Color(0xff6940e2))
-                              ),
-                              hintText: widget.user.bikes.elementAt(i)['year'].toString()
-                          ),
-                          // ignore: missing_return
-                          validator: (value) {
-                            bool required = false;
-                            if (value.isEmpty && required == true) {
-                              return 'Please enter the year this bike was registered';
-                            }
-                          },
-                          onSaved: (val) => setState(() => {
-                            if (val.isEmpty && widget.user.bikes.elementAt(i)['year'] != null ) {
-                              widget.user.bikes.elementAt(i)['year'] = widget.user.bikes.elementAt(i)['year']
-                            }else{
-                              widget.user.bikes.elementAt(i)['year'] = int.parse(val)
-                            }
-                          }
+                      child: RaisedButton(
+                        child: (
+                            Text("Click to change year")
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      Card(
+                                          child: YearPicker(
+                                              selectedDate: DateTime.now(),
+                                              firstDate: DateTime(1940),
+                                              lastDate: DateTime.now(),
+                                              onChanged: (value) => {
+                                                setState(() => {
+                                                  _newYear = value,
+                                                  Navigator.of(context).pop(false)
+                                                })
+                                              }
+                                          )
+                                      )
+                              )
+                          );
+
+                        },
                       ),
                     ),
                   ],
@@ -249,7 +269,7 @@ class _EditBikeFormState extends State<EditBikeForm> {
                           children: <Widget>[
                             Text(
                               _newMotDate == null
-                                  ? "Please Select a Date"
+                                  ? "Date of next MOT - ${_currentMotDate.day}/${_currentMotDate.month}/${_currentMotDate.year}"
                                   : "Selected Date - ${_newMotDate.day}/${_newMotDate.month}/${_newMotDate.year}",
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -312,7 +332,7 @@ class _EditBikeFormState extends State<EditBikeForm> {
                         children: <Widget>[
                           Text(
                             _newServiceDate == null
-                                ? "Please Select a Date"
+                                ? "Date of next service - ${_currentServiceDate.day}/${_currentServiceDate.month}/${_currentServiceDate.year}"
                                 : "Selected Date - ${_newServiceDate
                                 .day}/${_newServiceDate.month}/${_newServiceDate
                                 .year}",
@@ -514,7 +534,7 @@ class _EditBikeFormState extends State<EditBikeForm> {
 
                           Text(
                             _newInsuranceDate == null
-                                ? "Please Select a Date"
+                                ? "Insurance Renewal Date - ${_currentInsuranceDate.day}/${_currentInsuranceDate.month}/${_currentInsuranceDate.year}"
                                 : "Selected Date - ${_newInsuranceDate
                                 .day}/${_newInsuranceDate.month}/${_newInsuranceDate
                                 .year}",
@@ -887,16 +907,19 @@ class _EditBikeFormState extends State<EditBikeForm> {
                             if(form.validate()) {
                               form.save();
                               if(_newMotDate == null) {
-                                _newMotDate = widget.user.bikes.elementAt(i)['motRenewalDate'];
+                                _newMotDate = DateTime.parse(widget.user.bikes.elementAt(i)['motRenewalDate']);
                               }else if(_newServiceDate == null) {
-                                _newServiceDate = widget.user.bikes.elementAt(i)['lastServiceDate'];
+                                _newServiceDate = DateTime.parse(widget.user.bikes.elementAt(i)['nextServiceDate']);
                               }else if(_newInsuranceDate == null) {
-                                _newInsuranceDate = widget.user.bikes.elementAt(i)['insuranceRenewalDate'];
+                                _newInsuranceDate = DateTime.parse(widget.user.bikes.elementAt(i)['insuranceRenewalDate']);
+                              }else if(_newYear == null) {
+                                _newYear = DateTime.parse(widget.user.bikes.elementAt(i)['year']);
                               }
                               setState(() {
-                                widget.user.bikes.elementAt(i)['motRenewalDate'] = _newMotDate.toIso8601String();
-                                widget.user.bikes.elementAt(i)['lastServiceDate'] = _newServiceDate.toIso8601String();
-                                widget.user.bikes.elementAt(i)['insuranceRenewalDate'] = _newInsuranceDate.toIso8601String();
+                                widget.user.bikes.elementAt(i)['motRenewalDate'] = _newMotDate == null ? widget.user.bikes.elementAt(i)['motRenewalDate'] : _newMotDate.toIso8601String();
+                                widget.user.bikes.elementAt(i)['nextServiceDate'] = _newServiceDate == null ? widget.user.bikes.elementAt(i)['nextServiceDate'] :_newServiceDate.toIso8601String();
+                                widget.user.bikes.elementAt(i)['insuranceRenewalDate'] = _newInsuranceDate == null ? widget.user.bikes.elementAt(i)['insuranceRenewalDate'] :_newInsuranceDate.toIso8601String();
+                                widget.user.bikes.elementAt(i)['year'] = _newYear == null ? widget.user.bikes.elementAt(i)['year'] : _newYear.toIso8601String();
                                 widget.user = widget.user;
                                 updateUser(widget.user);
                               });
