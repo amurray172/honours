@@ -922,6 +922,7 @@ class _EditBikeFormState extends State<EditBikeForm> {
                                 widget.user.bikes.elementAt(i)['year'] = _newYear == null ? widget.user.bikes.elementAt(i)['year'] : _newYear.toIso8601String();
                                 widget.user = widget.user;
                                 updateUser(widget.user);
+                                Navigator.of(context).pop(false);
                               });
                             }
                           },

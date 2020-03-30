@@ -45,9 +45,12 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Motodocs"),
         actions: <Widget>[
-          Image(
-            image: AssetImage('assets/appbar.png'),
-          )
+          GestureDetector(
+            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Home(user: widget.user,)));},
+            child: Image(
+              image: AssetImage('assets/appbar.png'),
+            )
+          ),
         ],
         //backgroundColor: Color(0xff6940e2),
       ),

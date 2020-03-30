@@ -1028,6 +1028,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                                 setState(() {
                                   widget.user = widget.user;
                                   updateUser(widget.user);
+                                  Navigator.of(context).pop(false);
                                 });
                               }
                             },
