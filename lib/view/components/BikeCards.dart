@@ -17,6 +17,8 @@ class BikeCards extends StatefulWidget {
 
 class _BikeCardsState extends State<BikeCards> {
 
+  DateTime bikeYear;
+
   @override
   void initState() {
     super.initState();
@@ -27,6 +29,7 @@ class _BikeCardsState extends State<BikeCards> {
 
     setState(() {
       widget.i= widget.i;
+      bikeYear = DateTime.parse(widget.user.bikes.elementAt(widget.i)['year']);
     });
     //print(widget.user.bikes[widget.i]);
         return new Card(
@@ -61,7 +64,7 @@ class _BikeCardsState extends State<BikeCards> {
                   ),
                 ),
                 Text(
-                  widget.user.bikes[widget.i]['year'].toString(),
+                  "${bikeYear.year}",
                   textAlign: TextAlign.center,
                   style: new TextStyle(
                     color: Colors.blueAccent,

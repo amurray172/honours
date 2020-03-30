@@ -34,7 +34,7 @@ Future<http.Response> updateUser(jsonMap) async {
   dynamic bikesList = jsonMap.bikes;
   for(int i=0; i<bikesList.length; i++) {
     bikesList[i]['motRenewalDate'] = bikesList[i]['motRenewalDate'].toString();
-    bikesList[i]['lastServiceDate'] = bikesList[i]['lastServiceDate'].toString();
+    bikesList[i]['nextServiceDate'] = bikesList[i]['nextServiceDate'].toString();
     bikesList[i]['insuranceRenewalDate'] = bikesList[i]['insuranceRenewalDate'].toString();
   }
   String url = 'https://tl0gmb1a3e.execute-api.eu-west-2.amazonaws.com/prod/users/${jsonMap.username}/';

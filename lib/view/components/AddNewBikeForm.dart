@@ -23,6 +23,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
   DateTime _motDate;
   DateTime _serviceDate;
   DateTime _insuranceDate;
+  DateTime _newYear;
 
   DateTime startDate = DateTime.now();
   DateTime lastDate = DateTime.now().add(Duration(days: 365));
@@ -60,7 +61,6 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
   Widget build(BuildContext context) {
     String make;
     String model;
-    int year;
     String colour;
     int mileageAtMot;
     int mileageAtService;
@@ -155,11 +155,11 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                             }
                           },
                           onSaved: (val) =>
-                              setState(() =>
-                              {
-                                make = val
-                              }
-                              ),
+                            setState(() =>
+                            {
+                              make = val
+                            }
+                            ),
                         ),
                       ),
                     ],
@@ -199,29 +199,37 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                     children: <Widget>[
                       Text("Year of Manufacture"),
                       Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: _newYear == null ? Text("Please select a year", style: TextStyle(color: Theme.of(context).accentColor),) : Text("Selected year - ${_newYear.year}"),
+                      ),
+                      Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderSide: new BorderSide(color: Color(
-                                      0xff6940e2))
-                              ),
-                              hintText: "Year of Registration"
+                        child: RaisedButton(
+                          child: (
+                              Text("Click to choose a year")
                           ),
-                          // ignore: missing_return
-                          validator: (value) {
-                            bool required = true;
-                            if (value.isEmpty && required == true) {
-                              return 'Please enter the year this bike was registered';
-                            }
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Card(
+                                            child: YearPicker(
+                                                selectedDate: DateTime.now(),
+                                                firstDate: DateTime(1940),
+                                                lastDate: DateTime.now(),
+                                                onChanged: (value) => {
+                                                  setState(() => {
+                                                    _newYear = value,
+                                                    Navigator.of(context).pop(false)
+                                                  })
+                                                }
+                                            )
+                                        )
+                                )
+                            );
+
                           },
-                          onSaved: (val) =>
-                              setState(() =>
-                              {
-                                year = int.parse(val)
-                              }
-                              ),
                         ),
                       ),
                     ],
@@ -975,33 +983,45 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                           child: RaisedButton(
                             onPressed: () {
                               final form = _addBikeKey.currentState;
+                              Bike newBike = new Bike();
                               if (form.validate()) {
                                 form.save();
-                                Bike newBike = new Bike(
-                                  make: make.toString(),
-                                  model: model.toString(),
-                                  year: year,
-                                  colour: colour,
-                                  motRenewalDate: _motDate.toIso8601String(),
-                                  mileageAtMot: mileageAtMot,
-                                  lastServiceDate: _serviceDate.toIso8601String(),
-                                  mileageAtService: mileageAtService,
-                                  serviceInterval: serviceInterval,
-                                  insuranceCoverType: insuranceCoverType,
-                                  insurancePremium: insurancePremium,
-                                  insuranceProvider: insuranceProvider,
-                                  insuranceRenewalDate: _insuranceDate.toIso8601String(),
-                                  insuranceTotalExcess: insuranceTotalExcess,
-                                  insuranceUsage: insuranceUsage,
-                                  insuranceYearsNoClaims: insuranceYearsNoClaims,
-                                  purchasePrice: purchasePrice,
-                                  purchaseType: purchaseType,
-                                  valueOfAccessories: valueOfAccessories,
-                                  monthlyPayment: monthlyPayment,
-                                  optionalFinalPayment: optionalFinalPayment,
-                                  financeContractLength: financeContractLength,
-                                  financeEstimatedMileage: financeEstimatedMileage,
-                                );
+                                setState(() {
+                                  if(_newYear == null) {
+                                    _newYear = DateTime.now();
+                                  }else if (_motDate == null) {
+                                    _motDate = DateTime.now();
+                                  }else if (_serviceDate == null) {
+                                    _serviceDate = DateTime.now();
+                                  }else if (_insuranceDate == null) {
+                                    _insuranceDate = DateTime.now();
+                                  }
+                                  newBike = new Bike(
+                                    make: make.toString(),
+                                    model: model.toString(),
+                                    year: _newYear == null ? DateTime.now().toIso8601String() : _newYear.toIso8601String(),
+                                    colour: colour,
+                                    motRenewalDate: _motDate == null ? DateTime.now().toIso8601String() : _motDate.toIso8601String(),
+                                    mileageAtMot: mileageAtMot,
+                                    nextServiceDate: _serviceDate == null ? DateTime.now().toIso8601String() : _serviceDate.toIso8601String(),
+                                    mileageAtService: mileageAtService,
+                                    serviceInterval: serviceInterval,
+                                    insuranceCoverType: insuranceCoverType,
+                                    insurancePremium: insurancePremium,
+                                    insuranceProvider: insuranceProvider,
+                                    insuranceRenewalDate: _insuranceDate == null ? DateTime.now().toIso8601String() : _insuranceDate.toIso8601String(),
+                                    insuranceTotalExcess: insuranceTotalExcess,
+                                    insuranceUsage: insuranceUsage,
+                                    insuranceYearsNoClaims: insuranceYearsNoClaims,
+                                    purchasePrice: purchasePrice,
+                                    purchaseType: purchaseType,
+                                    valueOfAccessories: valueOfAccessories,
+                                    monthlyPayment: monthlyPayment,
+                                    optionalFinalPayment: optionalFinalPayment,
+                                    financeContractLength: financeContractLength,
+                                    financeEstimatedMileage: financeEstimatedMileage,
+                                  );
+                                });
 
                                 widget.user.bikes.add(newBike.map);
 
