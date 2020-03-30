@@ -341,7 +341,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                   ),
                   Column(
                     children: <Widget>[
-                      Text("Date of last Service"),
+                      Text("Date of next Service"),
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Column(
@@ -1028,6 +1028,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                                 setState(() {
                                   widget.user = widget.user;
                                   updateUser(widget.user);
+                                  Navigator.of(context).pop(false);
                                 });
                               }
                             },

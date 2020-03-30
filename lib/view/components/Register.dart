@@ -242,7 +242,6 @@ class _RegisterState extends State<Register> {
                                   final form = _registerKey.currentState;
                                   bool usernameValid = false;
                                   checkUsername = await fetchUser(username);
-
                                   if(checkUsername.username == "") {
                                     setState(() {
                                       usernameValid = true;
@@ -259,7 +258,7 @@ class _RegisterState extends State<Register> {
                                         errorMessage = "Account with this username already exists";
                                       });
                                     } else {
-                                      if(Password.verify(password, Password.hash(password, PBKDF2()) ) == Password.verify(confirmPassword, Password.hash(confirmPassword, PBKDF2()))) {
+                                      if(Password.verify(password, Password.hash(password, PBKDF2())) == Password.verify(confirmPassword, Password.hash(confirmPassword, PBKDF2()))) {
                                         form.save();
                                         setState(() {
                                           errorMessage = "";
@@ -272,6 +271,7 @@ class _RegisterState extends State<Register> {
                                         });
                                         //print(newUser.username);
                                         updateUser(newUser);
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
                                       }else {
                                         setState(() {
                                           errorMessage = "Passwords don't match";
