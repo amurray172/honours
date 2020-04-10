@@ -194,7 +194,16 @@ class _EditBikeFormState extends State<EditBikeForm> {
                     Text("Year of Manufacture"),
                     Padding(
                       padding: EdgeInsets.all(2.0),
-                      child: _newYear == null ? Text("${_bikeYear.year}") : Text("${_newYear.year}"),
+                      child: _newYear == null ? Text(
+                                "${_bikeYear.year}",
+                                style: TextStyle(
+                                  color: Theme.of(context).accentColor,
+                                ),
+                              ) : Text("${_newYear.year}",
+                                      style: TextStyle(
+                                      color: Theme.of(context).accentColor
+                                    ),
+                              ),
                     ),
                     Padding(
                       padding: EdgeInsets.all(8.0),
@@ -534,7 +543,7 @@ class _EditBikeFormState extends State<EditBikeForm> {
 
                           Text(
                             _newInsuranceDate == null
-                                ? "Insurance Renewal Date - ${_currentInsuranceDate.day}/${_currentInsuranceDate.month}/${_currentInsuranceDate.year}"
+                                ? "${_currentInsuranceDate.day}/${_currentInsuranceDate.month}/${_currentInsuranceDate.year}"
                                 : "Selected Date - ${_newInsuranceDate
                                 .day}/${_newInsuranceDate.month}/${_newInsuranceDate
                                 .year}",

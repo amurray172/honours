@@ -25,6 +25,8 @@ dependencies:
   intl: ^0.16.1
   date_format: ^1.0.8
   password: ^1.0.0
+  mailer: ^3.0.3
+  random_string: ^2.0.1
   flutter:
     sdk: flutter
 

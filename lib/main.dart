@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:honours/Login.dart';
+import 'package:honours/viewmodel/Login.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'Home.dart';
+import 'viewmodel/Home.dart';
 
 
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //Keep commented in case of emergency cause it sometimes doesnt work
     //Intl.defaultLocale = initializeDateFormatting("en_GB", null).toString();
-    final primaryColor = Color(0xff6940e2);
+        final primaryColor = Color(0xff6940e2);
     final accentColor = Colors.blueAccent;
     final whiteColor = Colors.white;
     final primarySwatch = Colors.blue;
