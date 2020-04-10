@@ -94,7 +94,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                           widthFactor: 1.5,
                           alignment: Alignment.topLeft,
                           child: Text(
-                            "Please enter as many details as you wish to store for your bike below",
+                            "Please enter your bikes details below",
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Theme

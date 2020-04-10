@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 Future<User> fetchUser(String username) async {
   final response =
   await http.get(
-      Uri.encodeFull('https://tl0gmb1a3e.execute-api.eu-west-2.amazonaws.com/prod/users/${username}'),
+      Uri.encodeFull('https://tl0gmb1a3e.execute-api.eu-west-2.amazonaws.com/prod/users/$username'),
       headers: {
         "Accept": "application/json"
       }
@@ -30,7 +30,6 @@ Future<User> fetchUser(String username) async {
 
 
 Future<http.Response> updateUser(jsonMap) async {
-
   dynamic bikesList = jsonMap.bikes;
   for(int i=0; i<bikesList.length; i++) {
     bikesList[i]['motRenewalDate'] = bikesList[i]['motRenewalDate'].toString();

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:honours/Home.dart';
-import 'package:honours/Login.dart';
+import 'package:honours/viewmodel/Home.dart';
+import 'package:honours/viewmodel/Login.dart';
 import 'package:honours/model/User.dart';
 import 'package:honours/view/components/AddNewBikeForm.dart';
 import 'package:honours/view/components/EditBikeForm.dart';
@@ -119,9 +119,11 @@ class _RegisterState extends State<Register> {
                             ),
                             // ignore: missing_return
                             validator: (value) {
-                              bool required = false;
+                              bool required = true;
                               if (value.isEmpty && required == true) {
                                 return "Please enter your Email Address";
+                              } else if (validateEmail(value) == false) {
+                                return "Please enter a valid email address";
                               }
                             },
                             onSaved: (val) => setState(() => {
@@ -309,5 +311,10 @@ class _RegisterState extends State<Register> {
     );
   }
 
-
+  bool validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    return (!regex.hasMatch(value)) ? false : true;
+  }
 }

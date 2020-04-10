@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:honours/Login.dart';
+import 'package:honours/viewmodel/Login.dart';
 import 'package:honours/helpers/AwsGatewayHelper.dart';
 import 'package:honours/model/User.dart';
 import 'package:password/password.dart';
