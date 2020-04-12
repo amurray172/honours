@@ -59,15 +59,30 @@ class _ProfileCardsState extends State<ProfileCards> {
                         ),
                         Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text("Username - ${widget.user.username}")),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              "Number of bikes stored - ${widget.user.bikes.length}"),
+                            child: Text(
+                                "Username - ${widget.user.username}",
+                                style: TextStyle(
+                                  color: Theme.of(context).accentColor
+                                ),
+                            )
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text("Email address - ${widget.user.email}"),
+                          child: Text(
+                              "Number of bikes stored - ${widget.user.bikes.length}",
+                              style: TextStyle(
+                                  color: Theme.of(context).accentColor
+                              ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                              "Email address - ${widget.user.email}",
+                              style: TextStyle(
+                                  color: Theme.of(context).accentColor
+                              ),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -298,6 +313,7 @@ class _ProfileCardsState extends State<ProfileCards> {
                             height: 40.0,
                             child: RaisedButton(
                               onPressed: () {
+                                updateUser(widget.user);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
