@@ -244,7 +244,8 @@ class _RegisterState extends State<Register> {
                                   final form = _registerKey.currentState;
                                   bool usernameValid = false;
                                   checkUsername = await fetchUser(username);
-                                  if(checkUsername.username == "") {
+                                  print(username);
+                                  if(checkUsername.username == "" || checkUsername.username == null) {
                                     setState(() {
                                       usernameValid = true;
                                     });
@@ -256,18 +257,34 @@ class _RegisterState extends State<Register> {
                                   if(form.validate()) {
                                     if(usernameValid == false) {
                                       setState(() {
-                                        username = "";
                                         errorMessage = "Account with this username already exists";
                                       });
                                     } else {
                                       if(Password.verify(password, Password.hash(password, PBKDF2())) == Password.verify(confirmPassword, Password.hash(confirmPassword, PBKDF2()))) {
                                         form.save();
+                                        List<dynamic> checklistItems = [];
+                                        Map checklistItemsMap = new Map();
+                                        checklistItemsMap['lights'] = false;
+                                        checklistItemsMap['steering'] = false;
+                                        checklistItemsMap['suspension'] = false;
+                                        checklistItemsMap['wheelsAndTyres'] = false;
+                                        checklistItemsMap['frame'] = false;
+                                        checklistItemsMap['braking'] = false;
+                                        checklistItemsMap['exhaust'] = false;
+                                        checklistItemsMap['fuel'] = false;
+                                        checklistItemsMap['sidecar'] = false;
+                                        checklistItemsMap['registration'] = false;
+                                        checklistItemsMap['throttle'] = false;
+                                        checklistItemsMap['clutch'] = false;
+                                        checklistItemsMap['footrests'] = false;
+                                        checklistItems.add(checklistItemsMap);
                                         setState(() {
                                           errorMessage = "";
                                           newUser = new User(
                                             username: username,
                                             email: email,
                                             password: password,
+                                            checklistItems: checklistItems,
                                             bikes: bikes,
                                           );
                                         });

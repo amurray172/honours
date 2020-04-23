@@ -36,7 +36,7 @@ class HomeCards extends StatelessWidget {
                Card(
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: ChecklistWidget(),
+                    child: ChecklistWidget(user: user),
                   ),
                   shape: RoundedRectangleBorder(
                     side: new BorderSide(
