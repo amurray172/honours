@@ -244,7 +244,8 @@ class _RegisterState extends State<Register> {
                                   final form = _registerKey.currentState;
                                   bool usernameValid = false;
                                   checkUsername = await fetchUser(username);
-                                  if(checkUsername.username == "") {
+                                  print(username);
+                                  if(checkUsername.username == "" || checkUsername.username == null) {
                                     setState(() {
                                       usernameValid = true;
                                     });
@@ -256,7 +257,6 @@ class _RegisterState extends State<Register> {
                                   if(form.validate()) {
                                     if(usernameValid == false) {
                                       setState(() {
-                                        username = "";
                                         errorMessage = "Account with this username already exists";
                                       });
                                     } else {

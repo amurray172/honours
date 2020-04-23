@@ -310,6 +310,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -380,6 +381,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -417,6 +419,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -493,6 +496,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -604,6 +608,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -680,6 +685,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -717,6 +723,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -793,6 +800,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -831,6 +839,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -868,6 +877,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -906,6 +916,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -944,6 +955,7 @@ class _AddNewBikeFormState extends State<AddNewBikeForm> {
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(

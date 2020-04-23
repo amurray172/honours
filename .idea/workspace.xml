@@ -5,16 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c27553f-0112-4bc9-9671-eb692ac135c6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/44b56a669a5e9e280ec17ab8980fbce8/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/44b56a669a5e9e280ec17ab8980fbce8/.filecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/44b56a669a5e9e280ec17ab8980fbce8/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/44b56a669a5e9e280ec17ab8980fbce8/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/User.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/components/ChecklistTile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/ChecklistTile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/components/ChecklistWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/ChecklistWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/components/HomeCards.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/HomeCards.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/app.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/app.apk.sha1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/components/AddNewBikeForm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/AddNewBikeForm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/components/EditBikeForm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/EditBikeForm.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/components/ProfileCards.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/ProfileCards.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/components/Register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/Register.dart" afterDir="false" />
     </list>
@@ -149,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586558269630</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Minor changes">
+      <created>1586717611255</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1586717611255</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

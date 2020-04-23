@@ -141,6 +141,7 @@ class _ProfileCardsState extends State<ProfileCards> {
                                             form.save();
                                             widget.user.email = newEmail;
                                             updateUser(widget.user);
+                                            Navigator.of(context).pop();
                                           },
                                           child: const Text(
                                             "Update",
