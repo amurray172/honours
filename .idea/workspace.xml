@@ -19,10 +19,7 @@
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/app.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/app.apk.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/components/AddNewBikeForm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/AddNewBikeForm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/components/EditBikeForm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/EditBikeForm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/components/ProfileCards.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/ProfileCards.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/components/Register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/components/Register.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/viewmodel/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/viewmodel/Login.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586717611255</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Final fixes">
+      <created>1587656771994</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1587656771994</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,6 +192,7 @@
     <MESSAGE value="Connected API and updated model classes" />
     <MESSAGE value="Completed main functionality including adding, and deleting users. Still to add editing email address, and password" />
     <MESSAGE value="Minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor changes" />
+    <MESSAGE value="Final fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final fixes" />
   </component>
 </project>

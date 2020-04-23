@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
       body: Center(
         child: SizedBox(
-          height: 400.0,
+          height: 500.0,
           width: 500.0,
           child: ClipRRect(
             borderRadius: BorderRadius.only(
